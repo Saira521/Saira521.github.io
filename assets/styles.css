@@ -79,6 +79,21 @@ h1, h2, h3, h4 { font-family: var(--display); color: var(--navy); text-wrap: bal
 .glance dt { color: var(--on-navy-muted); font-size: 0.8125rem; }
 .glance dd { color: var(--on-navy); font-size: 0.9375rem; font-weight: 500; line-height: 1.45; }
 
+/* Floating background icons on navy sections: CSS only, moving by transform alone */
+.hero, .cs-head { position: relative; overflow: hidden; }
+.hero > .wrap, .cs-head > .wrap { position: relative; z-index: 1; }
+.float-icons { position: absolute; inset: 0; contain: paint; pointer-events: none; }
+.fi { position: absolute; width: var(--fi-size, 56px); height: var(--fi-size, 56px); background: center / contain no-repeat; opacity: 0.17; animation: fi-drift-a 44s ease-in-out infinite alternate; }
+.fi:nth-child(even) { animation-name: fi-drift-b; }
+.fi-1 { background-image: url("icons/document-check.svg"); top: 9%; left: 3%; --fi-size: 54px; animation-duration: 46s; animation-delay: -6s; }
+.fi-2 { background-image: url("icons/trace-nodes.svg"); top: 70%; left: 7%; --fi-size: 64px; animation-duration: 54s; animation-delay: -20s; }
+.fi-3 { background-image: url("icons/cloud.svg"); top: 5%; left: 49%; --fi-size: 72px; animation-duration: 60s; animation-delay: -12s; }
+.fi-4 { background-image: url("icons/audit-search.svg"); top: 60%; left: 47%; --fi-size: 50px; animation-duration: 42s; animation-delay: -30s; }
+.fi-5 { background-image: url("icons/risk-grid.svg"); top: 12%; left: 92%; --fi-size: 60px; animation-duration: 50s; animation-delay: -16s; }
+.fi-6 { background-image: url("icons/checklist.svg"); top: 72%; left: 90%; --fi-size: 58px; animation-duration: 56s; animation-delay: -36s; }
+@keyframes fi-drift-a { from { transform: translate3d(0, 0, 0) rotate(-4deg); } to { transform: translate3d(34px, -38px, 0) rotate(6deg); } }
+@keyframes fi-drift-b { from { transform: translate3d(0, 0, 0) rotate(5deg); } to { transform: translate3d(-30px, 34px, 0) rotate(-5deg); } }
+
 /* Flow: traceability chain, audit workflow, lifecycle */
 .flow { display: flex; }
 .flow li { position: relative; flex: 1 1 0; min-width: 0; padding: 12px 14px; font: 600 0.875rem/1.3 var(--display); text-align: center; background: var(--white); border: 1px solid var(--line); border-radius: 6px; color: var(--navy); }
@@ -120,6 +135,8 @@ h1, h2, h3, h4 { font-family: var(--display); color: var(--navy); text-wrap: bal
 /* Expertise */
 .expertise-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
 .expertise-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.expertise-card, .project-card, .certification-card { transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease; }
+.expertise-card:hover, .project-card:hover, .certification-card:hover { transform: translateY(-2px); border-color: var(--teal); box-shadow: 0 8px 22px rgba(11, 31, 51, 0.08); }
 .expertise-card h3 { font-size: 1rem; line-height: 1.3; font-weight: 700; margin-bottom: 8px; }
 .expertise-card p { font-size: 0.875rem; line-height: 1.5; color: var(--muted); }
 
@@ -285,6 +302,10 @@ caption { text-align: left; font-size: 0.875rem; color: var(--muted); padding-bo
   .flow-steps li + li::before { content: none; }
   .btn { flex: 1 1 auto; }
   .btn-link-dark { flex: 0 1 auto; }
+  .fi-2, .fi-3, .fi-4, .fi-6 { display: none; }
+  .fi { opacity: 0.13; }
+  .fi-1 { top: 2%; left: 66%; --fi-size: 44px; }
+  .fi-5 { top: 4%; left: 85%; --fi-size: 44px; }
   .arch-row { grid-template-columns: minmax(0, 1fr); gap: 6px; }
   .model { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -295,5 +316,7 @@ caption { text-align: left; font-size: 0.875rem; color: var(--muted); padding-bo
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn { transition: none; }
+  .btn, .expertise-card, .project-card, .certification-card { transition: none; }
+  .expertise-card:hover, .project-card:hover, .certification-card:hover { transform: none; }
+  .fi { animation: none; }
 }
