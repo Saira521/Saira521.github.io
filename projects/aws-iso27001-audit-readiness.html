@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>AWS ISO 27001 Audit Readiness | Saira Kaleem</title>
+  <meta name="description" content="Independent portfolio project: an ISO/IEC 27001 audit-readiness package for a fictional SaaS company on AWS, with risks, controls, evidence, findings and corrective actions.">
+  <link rel="canonical" href="https://saira521.github.io/projects/aws-iso27001-audit-readiness.html">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="../assets/fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Saira Kaleem</a>
+    <nav class="nav" aria-label="Main">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#expertise">Expertise</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#certifications">Certifications</a>
+      <a href="../index.html#resume">Resume</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="cs-head">
+    <div class="wrap">
+      <a class="cs-back" href="../index.html#projects">Back to projects</a>
+      <div class="label-row">
+        <span class="status status-active"><span aria-hidden="true">◐</span> In Progress</span>
+        <span class="type-badge">Independent Portfolio Project</span>
+      </div>
+      <h1>AWS ISO 27001 Audit Readiness</h1>
+      <p class="project-subtitle">Audit-readiness package for a fictional SaaS company on AWS</p>
+      <p class="cs-note"><strong>Disclaimer:</strong> AsterCloud Learning Ltd. and all its systems, risks, evidence and findings are fictional. No employer or client information is included. This is an audit-readiness package, not a certification claim.</p>
+      <div class="actions"><a class="btn btn-outline-dark" href="https://github.com/Saira521/grc-cloud-security-portfolio" rel="noopener">View the Repository</a></div>
+    </div>
+  </div>
+
+  <div class="wrap cs-layout">
+    <nav class="cs-toc" aria-labelledby="toc-title">
+      <h2 id="toc-title">On this page</h2>
+      <a href="#summary">Executive Summary</a>
+      <a href="#context">Business Context</a>
+      <a href="#scope">Scope</a>
+      <a href="#environment">Environment</a>
+      <a href="#risks">Risks</a>
+      <a href="#frameworks">Frameworks</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#deliverables">Deliverables</a>
+      <a href="#controls">Controls</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#findings">Findings</a>
+      <a href="#remediation">Remediation</a>
+      <a href="#lessons">Lessons Learned</a>
+    </nav>
+
+    <div>
+      <section class="case-study-section" id="summary">
+        <h2>Executive Summary</h2>
+        <p class="lead">All five assessed risks remain High after controls, and three findings are open, because configured controls could not yet prove they operate over time.</p>
+        <p>The package separates control design, implementation and operating effectiveness. Residual risk stays elevated until evidence supports reducing it.</p>
+        <div class="stats">
+          <div class="stat"><strong>8</strong><span>assets</span></div>
+          <div class="stat"><strong>5</strong><span>risks</span></div>
+          <div class="stat"><strong>7</strong><span>controls</span></div>
+          <div class="stat"><strong>6</strong><span>evidence items</span></div>
+          <div class="stat"><strong>3</strong><span>open findings</span></div>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="context">
+        <h2>Business Context</h2>
+        <p>AsterCloud Learning Ltd. provides a multi-tenant learning platform to universities and professional training organisations, and is preparing for an ISO/IEC 27001 audit. It handles customer contact details, learner profiles, authentication metadata, course activity and support tickets.</p>
+        <h3>Business priorities</h3>
+        <ul class="ticks">
+          <li>Protect customer and learner information.</li>
+          <li>Maintain platform availability.</li>
+          <li>Detect unauthorised activity quickly.</li>
+          <li>Demonstrate consistent control operation to customers and auditors.</li>
+          <li>Reduce manual evidence collection through automation.</li>
+        </ul>
+      </section>
+
+      <section class="case-study-section" id="scope">
+        <h2>Scope</h2>
+        <p>The design, development, operation, monitoring and support of the AsterCloud SaaS platform.</p>
+        <h3>In scope</h3>
+        <ul class="ticks ticks-2">
+          <li>AWS production accounts</li>
+          <li>Shared security and logging services</li>
+          <li>EKS, RDS and S3</li>
+          <li>IAM and workforce access</li>
+          <li>GitHub CI/CD for production</li>
+          <li>Change and incident management</li>
+          <li>Backup and recovery</li>
+          <li>Vulnerability management and access reviews</li>
+        </ul>
+        <h3>Initially out of scope</h3>
+        <ul class="ticks">
+          <li>Employee personal devices, unless they provide privileged administrative access</li>
+          <li>Customer-owned endpoints</li>
+          <li>Third-party systems that do not process or protect scoped information</li>
+        </ul>
+      </section>
+
+      <section class="case-study-section" id="environment">
+        <h2>Environment</h2>
+        <figure class="arch" aria-label="Cloud security architecture by layer">
+          <div class="arch-row"><strong>Edge</strong><ul><li>CloudFront</li><li>AWS WAF</li></ul></div>
+          <div class="arch-row"><strong>Workloads</strong><ul><li>Amazon EKS</li></ul></div>
+          <div class="arch-row"><strong>Data</strong><ul><li>RDS PostgreSQL</li><li>Amazon S3</li></ul></div>
+          <div class="arch-row arch-row-control"><strong>Identity</strong><ul><li>IAM Identity Center</li><li>AWS Organizations</li></ul></div>
+          <div class="arch-row arch-row-control"><strong>Monitoring</strong><ul><li>CloudTrail</li><li>CloudWatch</li><li>AWS Config</li><li>GuardDuty</li><li>Security Hub</li></ul></div>
+          <div class="arch-row arch-row-control"><strong>Delivery</strong><ul><li>GitHub</li><li>GitHub Actions</li></ul></div>
+        </figure>
+        <div class="table-wrap">
+          <table class="data-table wide">
+            <caption>Asset register</caption>
+            <thead><tr><th scope="col">ID</th><th scope="col">Asset</th><th scope="col">Service</th><th scope="col">Classification</th><th scope="col">Criticality</th><th scope="col">RTO / RPO (hours)</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">AST-001</th><td>Production EKS Cluster</td><td>EKS</td><td>Confidential</td><td>Critical</td><td class="num">4 / 1</td></tr>
+              <tr><th scope="row">AST-002</th><td>Primary Customer Database</td><td>RDS</td><td>Restricted</td><td>Critical</td><td class="num">2 / 1</td></tr>
+              <tr><th scope="row">AST-003</th><td>Customer Document Store</td><td>S3</td><td>Restricted</td><td>High</td><td class="num">8 / 4</td></tr>
+              <tr><th scope="row">AST-004</th><td>Public Web Distribution</td><td>CloudFront</td><td>Public</td><td>High</td><td class="num">4 / 4</td></tr>
+              <tr><th scope="row">AST-005</th><td>Security Event Trail</td><td>CloudTrail</td><td>Confidential</td><td>Critical</td><td class="num">4 / 1</td></tr>
+              <tr><th scope="row">AST-006</th><td>Security Findings Hub</td><td>Security Hub</td><td>Confidential</td><td>High</td><td class="num">8 / 8</td></tr>
+              <tr><th scope="row">AST-007</th><td>Source Code Repository</td><td>GitHub</td><td>Confidential</td><td>Critical</td><td class="num">8 / 4</td></tr>
+              <tr><th scope="row">AST-008</th><td>CI/CD Pipeline</td><td>GitHub Actions</td><td>Confidential</td><td>Critical</td><td class="num">4 / 1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="risks">
+        <h2>Risks</h2>
+        <p class="lead">Controls bring both Critical risks down to High, but nothing falls below High until the operating evidence improves.</p>
+        <div class="heatmap-pair">
+          <div class="table-wrap">
+            <table class="risk-heatmap">
+              <caption>Inherent risk</caption>
+              <thead><tr><th class="corner" scope="col">Impact / Likelihood</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">5</th><td class="risk-moderate"></td><td class="risk-high"></td><td class="risk-high" title="Likelihood 3 × Impact 5 = 15, High">002<br>004<br>005</td><td class="risk-critical" title="Likelihood 4 × Impact 5 = 20, Critical">001</td><td class="risk-critical"></td></tr>
+                <tr><th scope="row">4</th><td class="risk-low"></td><td class="risk-moderate"></td><td class="risk-high"></td><td class="risk-critical" title="Likelihood 4 × Impact 4 = 16, Critical">003</td><td class="risk-critical"></td></tr>
+                <tr><th scope="row">3</th><td class="risk-low"></td><td class="risk-moderate"></td><td class="risk-moderate"></td><td class="risk-high"></td><td class="risk-high"></td></tr>
+                <tr><th scope="row">2</th><td class="risk-low"></td><td class="risk-low"></td><td class="risk-moderate"></td><td class="risk-moderate"></td><td class="risk-high"></td></tr>
+                <tr><th scope="row">1</th><td class="risk-low"></td><td class="risk-low"></td><td class="risk-low"></td><td class="risk-low"></td><td class="risk-moderate"></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table class="risk-heatmap">
+              <caption>Residual risk</caption>
+              <thead><tr><th class="corner" scope="col">Impact / Likelihood</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">5</th><td class="risk-moderate"></td><td class="risk-high" title="Likelihood 2 × Impact 5 = 10, High">002</td><td class="risk-high" title="Likelihood 3 × Impact 5 = 15, High">001<br>005</td><td class="risk-critical"></td><td class="risk-critical"></td></tr>
+                <tr><th scope="row">4</th><td class="risk-low"></td><td class="risk-moderate"></td><td class="risk-high" title="Likelihood 3 × Impact 4 = 12, High">003<br>004</td><td class="risk-critical"></td><td class="risk-critical"></td></tr>
+                <tr><th scope="row">3</th><td class="risk-low"></td><td class="risk-moderate"></td><td class="risk-moderate"></td><td class="risk-high"></td><td class="risk-high"></td></tr>
+                <tr><th scope="row">2</th><td class="risk-low"></td><td class="risk-low"></td><td class="risk-moderate"></td><td class="risk-moderate"></td><td class="risk-high"></td></tr>
+                <tr><th scope="row">1</th><td class="risk-low"></td><td class="risk-low"></td><td class="risk-low"></td><td class="risk-low"></td><td class="risk-moderate"></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <ul class="heatmap-legend" aria-label="Rating bands">
+          <li><i class="risk-low"></i>Low (1 to 4)</li>
+          <li><i class="risk-moderate"></i>Moderate (5 to 9)</li>
+          <li><i class="risk-high"></i>High (10 to 15)</li>
+          <li><i class="risk-critical"></i>Critical (16 to 25)</li>
+        </ul>
+        <div class="table-wrap">
+          <table class="data-table wide">
+            <caption>Numbers on the heatmaps are the risk IDs below.</caption>
+            <thead><tr><th scope="col">ID</th><th scope="col">Risk</th><th scope="col">Owner</th><th scope="col">Inherent</th><th scope="col">Residual</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">RSK-001</th><td>Unauthorised privileged access to production</td><td>Head of Engineering</td><td class="num">20 Critical</td><td class="num">15 High</td></tr>
+              <tr><th scope="row">RSK-002</th><td>Customer PII exposed from storage</td><td>Platform Lead</td><td class="num">15 High</td><td class="num">10 High</td></tr>
+              <tr><th scope="row">RSK-003</th><td>Security events not detected or investigated</td><td>Security Lead</td><td class="num">16 Critical</td><td class="num">12 High</td></tr>
+              <tr><th scope="row">RSK-004</th><td>Unauthorised or failed production change</td><td>Engineering Manager</td><td class="num">15 High</td><td class="num">12 High</td></tr>
+              <tr><th scope="row">RSK-005</th><td>Extended outage after data loss</td><td>Platform Lead</td><td class="num">15 High</td><td class="num">15 High</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="frameworks">
+        <h2>Frameworks</h2>
+        <ul class="framework-list">
+          <li class="framework-badge framework-badge-applied">ISO/IEC 27001:2022</li>
+          <li class="framework-badge">ISO/IEC 27017</li>
+          <li class="framework-badge">ISO/IEC 27018</li>
+        </ul>
+        <p>Controls reference these standards at framework level. Detailed clause-by-clause mapping is still to do, and standard text is not reproduced.</p>
+      </section>
+
+      <section class="case-study-section" id="methodology">
+        <h2>Methodology</h2>
+        <ol class="flow" aria-label="Audit workflow">
+          <li>Scope</li><li>Assets</li><li>Risks</li><li>Controls</li><li>Testing</li><li>Findings</li>
+        </ol>
+        <ul class="ticks">
+          <li>Likelihood and impact are scored from 1 to 5. Inherent risk is assessed before existing controls are considered.</li>
+          <li>Control effectiveness is rated separately from 0 (not implemented) to 4 (strong and evidenced over time), using design, implementation and operating evidence.</li>
+          <li>Residual risk is reassessed only against verified control operation, not because a policy exists or a tool is enabled.</li>
+        </ul>
+      </section>
+
+      <section class="case-study-section" id="deliverables">
+        <h2>Deliverables</h2>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Area</th><th scope="col">Deliverable</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Organisation</th><td>ISMS scope</td><td><span class="status status-active"><span aria-hidden="true">◐</span> Starter complete</span></td></tr>
+              <tr><th scope="row">Assets</th><td>Asset register</td><td><span class="status status-active"><span aria-hidden="true">◐</span> Starter dataset</span></td></tr>
+              <tr><th scope="row">Risks</th><td>Risk methodology and risk register</td><td><span class="status status-active"><span aria-hidden="true">◐</span> Starter complete</span></td></tr>
+              <tr><th scope="row">Controls</th><td>Unified control library</td><td><span class="status status-active"><span aria-hidden="true">◐</span> Starter controls</span></td></tr>
+              <tr><th scope="row">Controls</th><td>Framework mapping</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> To do</span></td></tr>
+              <tr><th scope="row">Audit</th><td>Evidence register and control test worksheet</td><td><span class="status status-active"><span aria-hidden="true">◐</span> Starter dataset</span></td></tr>
+              <tr><th scope="row">Findings</th><td>Findings register and corrective action tracker</td><td><span class="status status-active"><span aria-hidden="true">◐</span> Starter dataset</span></td></tr>
+              <tr><th scope="row">Automation</th><td>YAML control validator and GitHub Actions workflow file</td><td><span class="status status-pass"><span aria-hidden="true">✓</span> Included</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="controls">
+        <h2>Controls</h2>
+        <p class="lead">Of seven controls, three have been tested so far, and each has at least one exception.</p>
+        <div class="table-wrap">
+          <table class="data-table wide control-status">
+            <thead><tr><th scope="col">ID</th><th scope="col">Control</th><th scope="col">Owner</th><th scope="col">Test frequency</th><th scope="col">Result</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">LOG-001</th><td>Security-relevant activity is centrally logged and monitored</td><td>Security</td><td>Monthly</td><td><span class="status status-partial"><span aria-hidden="true">◐</span> Partial</span></td></tr>
+              <tr><th scope="row">CHG-001</th><td>Production changes are authorised, tested and recoverable</td><td>Engineering</td><td>Quarterly</td><td><span class="status status-partial"><span aria-hidden="true">◐</span> Partial</span></td></tr>
+              <tr><th scope="row">BCP-001</th><td>Critical data is backed up and recovery is tested</td><td>Platform Engineering</td><td>Quarterly</td><td><span class="status status-fail"><span aria-hidden="true">✕</span> Exception</span></td></tr>
+              <tr><th scope="row">IAM-001</th><td>Privileged access is restricted and approved</td><td>Security</td><td>Quarterly</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Not yet tested</span></td></tr>
+              <tr><th scope="row">IAM-002</th><td>Strong authentication protects privileged access</td><td>Security</td><td>Monthly</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Not yet tested</span></td></tr>
+              <tr><th scope="row">DATA-001</th><td>Sensitive data stores are protected from unauthorised disclosure</td><td>Platform Engineering</td><td>Continuous</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Not yet tested</span></td></tr>
+              <tr><th scope="row">IR-001</th><td>Security alerts and incidents are triaged and tracked</td><td>Security</td><td>Quarterly</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Not yet tested</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="evidence">
+        <h2>Evidence</h2>
+        <div class="table-wrap">
+          <table class="data-table wide evidence-table">
+            <caption>Review period 2026 Q3</caption>
+            <thead><tr><th scope="col">ID</th><th scope="col">Control</th><th scope="col">Evidence</th><th scope="col">Result</th><th scope="col">Note</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">EV-001</th><td>LOG-001</td><td>Organisation trail configuration</td><td><span class="status status-pass"><span aria-hidden="true">✓</span> Pass</span></td><td>Design and implementation evidence only</td></tr>
+              <tr><th scope="row">EV-002</th><td>LOG-001</td><td>Sampled alert review records</td><td><span class="status status-partial"><span aria-hidden="true">◐</span> Partial</span></td><td>Only two months of consistent review evidence</td></tr>
+              <tr><th scope="row">EV-003</th><td>CHG-001</td><td>Standard production pull requests</td><td><span class="status status-pass"><span aria-hidden="true">✓</span> Pass</span></td><td>Approvals and CI checks present</td></tr>
+              <tr><th scope="row">EV-004</th><td>CHG-001</td><td>Emergency change samples</td><td><span class="status status-partial"><span aria-hidden="true">◐</span> Partial</span></td><td>Retrospective review missing for one sample</td></tr>
+              <tr><th scope="row">EV-005</th><td>BCP-001</td><td>Backup job history</td><td><span class="status status-pass"><span aria-hidden="true">✓</span> Pass</span></td><td>Backups configured and completing</td></tr>
+              <tr><th scope="row">EV-006</th><td>BCP-001</td><td>Restoration test record</td><td><span class="status status-fail"><span aria-hidden="true">✕</span> Fail</span></td><td>No restoration test evidence for the period</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="findings">
+        <h2>Findings</h2>
+        <div class="table-wrap">
+          <table class="data-table wide">
+            <thead><tr><th scope="col">ID</th><th scope="col">Finding</th><th scope="col">Severity</th><th scope="col">Effect on risk</th><th scope="col">Owner</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">FND-001</th><td>Insufficient evidence of consistent security alert review</td><td>High</td><td>Likelihood of undetected malicious activity remains elevated</td><td>Security Lead</td></tr>
+              <tr><th scope="row">FND-002</th><td>Emergency change retrospective review not consistently completed</td><td>Moderate</td><td>Control cannot receive full operating-effectiveness credit</td><td>Engineering Manager</td></tr>
+              <tr><th scope="row">FND-003</th><td>No current-period restoration test evidence</td><td>High</td><td>Availability risk remains high</td><td>Platform Lead</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="remediation">
+        <h2>Remediation</h2>
+        <div class="table-wrap">
+          <table class="data-table wide">
+            <thead><tr><th scope="col">ID</th><th scope="col">Finding</th><th scope="col">Corrective action</th><th scope="col">How closure is validated</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">CAPA-001</th><td>FND-001</td><td>Define a monthly alert-review process and retain review evidence</td><td>Review three consecutive monthly records</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Open</span></td></tr>
+              <tr><th scope="row">CAPA-002</th><td>FND-002</td><td>Add a mandatory retrospective approval step to the emergency change workflow</td><td>Sample the next three emergency changes</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Open</span></td></tr>
+              <tr><th scope="row">CAPA-003</th><td>FND-003</td><td>Perform a restoration test against the documented RTO and RPO</td><td>Review the completed restore-test report</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Open</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="lessons">
+        <h2>Lessons Learned</h2>
+        <p>The project is in progress, so these are the working principles so far.</p>
+        <ul class="ticks">
+          <li>Show operating evidence, not just policy documents.</li>
+          <li>Separate control design, implementation and operating effectiveness.</li>
+          <li>Keep inherent and residual risk distinct.</li>
+          <li>Use structured, machine-readable controls where possible.</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="site-foot">
+  <div class="wrap">
+    <div><strong>Saira Kaleem</strong><br>Information Security &amp; GRC Professional</div>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/sairakaleem/" rel="me noopener">LinkedIn</a>
+      <a href="https://github.com/Saira521" rel="me noopener">GitHub</a>
+      <span>No cookies, trackers or scripts.</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

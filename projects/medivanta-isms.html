@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; font-src 'self'; base-uri 'self'; form-action 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Medivanta Health ISMS | Saira Kaleem</title>
-  <meta name="description" content="Simulated ISO/IEC 27001:2022 ISMS implementation case study for a fictional UK private healthcare provider.">
+  <title>Medivanta Health ISMS Case Study | Saira Kaleem</title>
+  <meta name="description" content="Simulated ISO/IEC 27001:2022 ISMS implementation case study for a fictional UK private healthcare and digital-health organisation.">
+  <link rel="canonical" href="https://saira521.github.io/projects/medivanta-isms.html">
   <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="../assets/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/manrope-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../assets/styles.css">
-  <script src="../assets/theme.js"></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -19,103 +19,211 @@
   <div class="wrap">
     <a class="brand" href="../index.html">Saira Kaleem</a>
     <nav class="nav" aria-label="Main">
-      <a href="../index.html#work">Work</a>
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#expertise">Expertise</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#certifications">Certifications</a>
+      <a href="../index.html#resume">Resume</a>
       <a href="../index.html#contact">Contact</a>
-      <button class="theme-toggle" type="button" hidden>Theme</button>
     </nav>
   </div>
 </header>
 
 <main id="main">
-  <section class="study-head">
+  <div class="cs-head">
     <div class="wrap">
-      <a class="back" href="../index.html#work">Back to selected work</a>
-      <div class="card-top mono"><span class="status status-progress">In progress</span><span>Simulated case study · ISO/IEC 27001:2022</span></div>
-      <h1>Building an ISMS for a private healthcare provider</h1>
-      <p class="hero-lede">A structured, risk-based ISMS to protect the confidentiality, integrity and availability of patient and organisational information at Medivanta Health Ltd.</p>
-      <p class="notice"><strong>Fictional organisation.</strong> Medivanta Health Ltd. was created for educational, professional development and portfolio purposes. All details are illustrative and do not represent an actual healthcare provider or client engagement.</p>
+      <a class="cs-back" href="../index.html#projects">Back to projects</a>
+      <div class="label-row">
+        <span class="status status-active"><span aria-hidden="true">◐</span> In Progress</span>
+        <span class="type-badge">Simulated Case Study</span>
+      </div>
+      <h1>Medivanta Health Ltd.</h1>
+      <p class="project-subtitle">ISO/IEC 27001:2022 ISMS Implementation Case Study</p>
+      <p class="cs-note"><strong>Disclaimer:</strong> Medivanta Health Ltd. is a fictional organisation created exclusively for educational, professional development, and portfolio demonstration purposes.</p>
     </div>
-  </section>
+  </div>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="section-label"><h2>The organisation</h2></div>
-      <div>
-        <p class="lede-block">A London-based provider combining private clinics with digital health services, and handling sensitive patient data at every step.</p>
-        <div class="table-scroll">
-          <table>
+  <div class="wrap cs-layout">
+    <nav class="cs-toc" aria-labelledby="toc-title">
+      <h2 id="toc-title">On this page</h2>
+      <a href="#summary">Executive Summary</a>
+      <a href="#context">Business Context</a>
+      <a href="#scope">Scope</a>
+      <a href="#environment">Environment</a>
+      <a href="#risks">Risks</a>
+      <a href="#frameworks">Frameworks</a>
+      <a href="#methodology">Methodology</a>
+      <a href="#deliverables">Deliverables</a>
+      <a href="#controls">Controls</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#findings">Findings</a>
+      <a href="#remediation">Remediation</a>
+      <a href="#lessons">Lessons Learned</a>
+    </nav>
+
+    <div>
+      <section class="case-study-section" id="summary">
+        <h2>Executive Summary</h2>
+        <p class="lead">A structured, risk-based ISMS to protect the confidentiality, integrity and availability of patient and organisational information.</p>
+        <p>Medivanta Health is a London-based private healthcare provider combining clinical services with digital health platforms. This case study builds its ISMS from context and scope through to internal audit, management review and certification readiness.</p>
+        <div class="stats">
+          <div class="stat"><strong>~75</strong><span>employees</span></div>
+          <div class="stat"><strong>2</strong><span>private clinics</span></div>
+          <div class="stat"><strong>~5,000</strong><span>registered patients</span></div>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="context">
+        <h2>Business Context</h2>
+        <p>Medivanta delivers outpatient consultations and specialist appointments, patient administration, online booking and patient communication, and works with external laboratories and diagnostic providers. Sensitive information moves through all of these services.</p>
+        <p>A security failure could affect patient confidentiality, business continuity, regulatory compliance and the organisation's reputation.</p>
+      </section>
+
+      <section class="case-study-section" id="scope">
+        <h2>Scope</h2>
+        <p>The ISMS is expected to cover Medivanta's clinical facilities, digital healthcare platforms and the supporting systems and suppliers listed below. The formal scope statement and its boundaries are the first planned deliverable.</p>
+        <h3>Key information assets</h3>
+        <ul class="ticks ticks-2">
+          <li>Patient medical records and clinical histories</li>
+          <li>Personally identifiable information</li>
+          <li>Appointment and consultation records</li>
+          <li>Employee and healthcare professional records</li>
+          <li>Financial and billing information</li>
+          <li>Authentication credentials and access records</li>
+          <li>Clinical and operational documentation</li>
+        </ul>
+      </section>
+
+      <section class="case-study-section" id="environment">
+        <h2>Environment</h2>
+        <div class="table-wrap">
+          <table class="data-table">
             <tbody>
-              <tr><th scope="row">Industry</th><td>Healthcare and digital health</td></tr>
-              <tr><th scope="row">Headquarters</th><td>London, United Kingdom</td></tr>
-              <tr><th scope="row">People</th><td>About 75 personnel</td></tr>
-              <tr><th scope="row">Facilities</th><td>2 private clinics</td></tr>
-              <tr><th scope="row">Patients</th><td>About 5,000 registered</td></tr>
-              <tr><th scope="row">Key systems</th><td>EHR, cloud-hosted applications, Microsoft 365, appointment booking, IAM, security monitoring and logging, backup and disaster recovery</td></tr>
-              <tr><th scope="row">Third parties</th><td>Laboratories, diagnostic providers, technology vendors and other healthcare partners</td></tr>
+              <tr><th scope="row">Clinical systems</th><td>Electronic Health Records, appointment booking and management</td></tr>
+              <tr><th scope="row">Cloud</th><td>Cloud-hosted applications and infrastructure</td></tr>
+              <tr><th scope="row">Collaboration</th><td>Microsoft 365</td></tr>
+              <tr><th scope="row">Endpoints</th><td>Corporate laptops, desktops and clinical workstations</td></tr>
+              <tr><th scope="row">Security</th><td>Identity and Access Management, security monitoring and logging</td></tr>
+              <tr><th scope="row">Resilience</th><td>Backup and disaster recovery infrastructure</td></tr>
+              <tr><th scope="row">Third parties</th><td>Laboratories, diagnostic providers, technology vendors and healthcare partners</td></tr>
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <section class="section">
-    <div class="wrap">
-      <div class="section-label"><h2>What is at stake</h2></div>
-      <div>
-        <div class="block">
-          <h3 class="sub-h">Key information assets</h3>
-          <ul class="ticks two-col">
-            <li>Patient medical records and clinical histories</li>
-            <li>Personally identifiable information</li>
-            <li>Appointment and consultation records</li>
-            <li>Employee and healthcare professional records</li>
-            <li>Financial and billing information</li>
-            <li>Authentication credentials and access records</li>
-          </ul>
-        </div>
-        <div class="block">
-          <h3 class="sub-h">Threats the ISMS must address</h3>
-          <ul class="ticks two-col">
-            <li>Unauthorised disclosure of patient information</li>
-            <li>Ransomware attacks</li>
-            <li>System disruptions</li>
-            <li>Compromised user accounts</li>
-            <li>Third-party security failures</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="wrap">
-      <div class="section-label"><h2>Planned approach</h2></div>
-      <div>
-        <p class="sub-note">Outline following the ISO/IEC 27001:2022 clause structure. Each item will link to its deliverable as it is completed.</p>
-        <div class="table-scroll">
-          <table class="clauses">
-            <thead><tr><th scope="col">Clause</th><th scope="col">Planned deliverables</th><th scope="col">Status</th></tr></thead>
+      <section class="case-study-section" id="risks">
+        <h2>Risks</h2>
+        <p>These are the main risk scenarios identified for Medivanta so far. Likelihood and impact ratings, and the risk heatmap, will be added once the risk assessment has been carried out.</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Risk scenario</th><th scope="col">Rating</th></tr></thead>
             <tbody>
-              <tr><th scope="row">4 Context</th><td>Organisational context, interested parties and requirements, ISMS scope</td><td><span class="status status-planned">Planned</span></td></tr>
-              <tr><th scope="row">5 Leadership</th><td>Information security policy, roles and responsibilities</td><td><span class="status status-planned">Planned</span></td></tr>
-              <tr><th scope="row">6 Planning</th><td>Risk methodology, risk register, risk treatment plan, Statement of Applicability, security objectives</td><td><span class="status status-planned">Planned</span></td></tr>
-              <tr><th scope="row">7 Support</th><td>Competence and awareness plan, documented information control</td><td><span class="status status-planned">Planned</span></td></tr>
-              <tr><th scope="row">8 Operation</th><td>Selected policies and procedures: access control, incident management, supplier security, backup and continuity</td><td><span class="status status-planned">Planned</span></td></tr>
-              <tr><th scope="row">9 Performance</th><td>Monitoring metrics, internal audit programme, management review</td><td><span class="status status-planned">Planned</span></td></tr>
-              <tr><th scope="row">10 Improvement</th><td>Nonconformity and corrective action process, continual improvement log</td><td><span class="status status-planned">Planned</span></td></tr>
+              <tr><td>Unauthorised disclosure of patient information</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Pending assessment</span></td></tr>
+              <tr><td>Ransomware attack</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Pending assessment</span></td></tr>
+              <tr><td>System disruption</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Pending assessment</span></td></tr>
+              <tr><td>Compromised user accounts</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Pending assessment</span></td></tr>
+              <tr><td>Third-party security failure</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Pending assessment</span></td></tr>
             </tbody>
           </table>
         </div>
-      </div>
+      </section>
+
+      <section class="case-study-section" id="frameworks">
+        <h2>Frameworks</h2>
+        <ul class="framework-list">
+          <li class="framework-badge framework-badge-applied">ISO/IEC 27001:2022</li>
+          <li class="framework-badge">ISO/IEC 27002 guidance</li>
+          <li class="framework-badge">UK data protection obligations</li>
+        </ul>
+      </section>
+
+      <section class="case-study-section" id="methodology">
+        <h2>Methodology</h2>
+        <p>The work follows the ISMS lifecycle, using the clause structure of ISO/IEC 27001:2022.</p>
+        <ol class="flow flow-steps" aria-label="ISMS lifecycle">
+          <li>Plan<small>Clauses 4 to 7: context, leadership, planning, support</small></li>
+          <li>Do<small>Clause 8: operation and risk treatment</small></li>
+          <li>Check<small>Clause 9: monitoring, internal audit, management review</small></li>
+          <li>Act<small>Clause 10: nonconformity and continual improvement</small></li>
+        </ol>
+      </section>
+
+      <section class="case-study-section" id="deliverables">
+        <h2>Deliverables</h2>
+        <p>Each item will link to its document as it is completed.</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th scope="col">Stage</th><th scope="col">Deliverables</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Plan</th><td>ISMS Context, Scope, Interested Parties, Asset Register, Risk Methodology, Risk Register, Risk Treatment Plan, Statement of Applicability, Security Policies</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Planned</span></td></tr>
+              <tr><th scope="row">Do</th><td>Control Implementation, Evidence Mapping</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Planned</span></td></tr>
+              <tr><th scope="row">Check</th><td>Internal Audit, Management Review</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Planned</span></td></tr>
+              <tr><th scope="row">Act</th><td>Nonconformities, Certification Readiness</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Planned</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="controls">
+        <h2>Controls</h2>
+        <p>Likely focus areas from Annex A. The Statement of Applicability will confirm the final selection.</p>
+        <div class="table-wrap">
+          <table class="data-table control-status">
+            <thead><tr><th scope="col">Annex A</th><th scope="col">Control</th><th scope="col">Risk addressed</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">A.5.15</th><td>Access control</td><td>Unauthorised disclosure</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Planned</span></td></tr>
+              <tr><th scope="row">A.8.5</th><td>Secure authentication</td><td>Compromised accounts</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Planned</span></td></tr>
+              <tr><th scope="row">A.8.7</th><td>Protection against malware</td><td>Ransomware</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Planned</span></td></tr>
+              <tr><th scope="row">A.8.13</th><td>Information backup</td><td>Ransomware, disruption</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Planned</span></td></tr>
+              <tr><th scope="row">A.5.19</th><td>Information security in supplier relationships</td><td>Third-party failure</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Planned</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="evidence">
+        <h2>Evidence</h2>
+        <p>The evidence each focus control is expected to produce. Nothing has been collected yet.</p>
+        <div class="table-wrap">
+          <table class="data-table evidence-table">
+            <thead><tr><th scope="col">Control</th><th scope="col">Expected evidence</th><th scope="col">Status</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">A.5.15</th><td>EHR access review records</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Not collected</span></td></tr>
+              <tr><th scope="row">A.8.5</th><td>Microsoft 365 and IAM authentication settings</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Not collected</span></td></tr>
+              <tr><th scope="row">A.8.13</th><td>Backup job history and restoration test records</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Not collected</span></td></tr>
+              <tr><th scope="row">A.5.19</th><td>Supplier assessments and contract security clauses</td><td><span class="status status-neutral"><span aria-hidden="true">○</span> Not collected</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="case-study-section" id="findings">
+        <h2>Findings</h2>
+        <p class="pending"><strong>Not yet available.</strong> Findings and nonconformities will be recorded after the simulated internal audit.</p>
+      </section>
+
+      <section class="case-study-section" id="remediation">
+        <h2>Remediation</h2>
+        <p class="pending"><strong>Not yet available.</strong> Corrective actions will follow from the audit findings.</p>
+      </section>
+
+      <section class="case-study-section" id="lessons">
+        <h2>Lessons Learned</h2>
+        <p class="pending"><strong>Not yet available.</strong> Written when the case study is complete.</p>
+      </section>
     </div>
-  </section>
+  </div>
 </main>
 
 <footer class="site-foot">
   <div class="wrap">
-    <span>© 2026 Saira Kaleem</span>
-    <span>No cookies, no trackers, no third-party scripts.</span>
+    <div><strong>Saira Kaleem</strong><br>Information Security &amp; GRC Professional</div>
+    <div class="foot-links">
+      <a href="https://www.linkedin.com/in/sairakaleem/" rel="me noopener">LinkedIn</a>
+      <a href="https://github.com/Saira521" rel="me noopener">GitHub</a>
+      <span>No cookies, trackers or scripts.</span>
+      <span>© 2026</span>
+    </div>
   </div>
 </footer>
 </body>
